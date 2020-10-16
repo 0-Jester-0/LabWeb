@@ -9,7 +9,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AutoBox</title>
+    <title>Регистрация</title>
 
     <link rel="icon" href="../img/Logo.jpg" type="image/x-icon">
 
@@ -33,7 +33,7 @@ session_start();
             AutoBox</a>
             <nav class="nav">
             <?php
-                if (!empty($_COOKIE['user'])) :
+                if (isset($_SESSION['user'])) :
               ?>
                 <a class="nav-link" href="/pages/auto.php">Список автомобилей</a>
                 <a class="nav-link" href="/pages/owner.php">Список владельцев</a>

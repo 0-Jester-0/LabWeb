@@ -29,7 +29,7 @@ if(mysqli_num_rows($result) > 0)
 }
 
 $mysql->query("INSERT INTO `users` (`email`, `login`, `password`, `name`) VALUES('$email', '$login', '$pass', '$name')");
-$_SESSION['message'] = 'Регистрация прошла успешно';
+$_SESSION['message'] = 'Регистрация прошла успешно!';
     header('Location: ../pages/auth.php');
           
 

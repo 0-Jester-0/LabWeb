@@ -1,6 +1,6 @@
 <?php
     session_start();
-    setcookie('user', $user['name'], time() - 3600 * 24 * 7, "/");
-    unset($_SESSION['message']);
+    unset($_SESSION['user']);
+    session_destroy();
     header('Location: ../index.php');
 ?>

@@ -38,7 +38,7 @@ session_start();
             </nav>
             <ul class="nav justify-content-end">
             <?php
-                if (empty($_COOKIE['user'])) :
+                if (!isset($_SESSION['user'])) :
               ?>
             <li class="nav-item">
                 <a class="nav-link" href="/pages/auth.php">Вход</a>

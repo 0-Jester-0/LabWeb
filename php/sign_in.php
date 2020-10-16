@@ -18,17 +18,14 @@ if(mysqli_num_rows($result) < 1)
   exit();
 }
 
+$_SESSION['user'] = $login;
+
 $_SESSION ['user'] = [
   "name" => $user['name'],
   "login" => $user['login'],
   "email" => $user['email']
 ];
 
-
-
-print_r($user);
-
-setcookie('user', $user['name'],time() + 3600 * 24 * 7 , "/");
 $mysql->close();
 
 header('Location: /index.php');
