@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,59 +32,43 @@
             <img src="../img/Logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
             AutoBox</a>
             <nav class="nav">
-            <?php if (!empty($_COOKIE['user'])) : ?>
+            <?php
+                if (!empty($_COOKIE['user'])) :
+              ?>
                 <a class="nav-link" href="/pages/auto.php">Список автомобилей</a>
                 <a class="nav-link" href="/pages/owner.php">Список владельцев</a>
                 <a class="nav-link" href="/pages/journal.php">Журнал </a>
                 <a class="nav-link" href="/pages/team.php">Наша команда</a>
-            <?php endif;?>
+                <?php
+                endif;
+                ?>
             </nav>
             <ul class="nav justify-content-end">
             <li class="nav-item">
-                <a class="nav-link" href="/pages/auth.php">Вход</a>
+                <a class="nav-link" href="../pages/auth.php">Вход</a>
                 </li>
-                <li class="nav-item">
-                <?php if (!empty($_COOKIE['user'])) : ?>
-                <button type="button" class="btn btn-light" onclick="window.location.href ='/pages/registration.php'">Регистрация</button>
-                <?php endif;?>    
-            </li>
             </ul>
     </div>
   </nav>
 </div>
-
-        <!--<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000000;">
-            <div class="container">
-                <div class="cap">
-                    <a class="navbar-brand" href="/index.php">
-                        <img src="img/Logo.jpg" width="30" height="30" class="d-inline-block align-top" alt=""
-                            loading="lazy">
-                        AutoBox</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <nav class="navbar-nav">
-                            <a class="nav-link" href="auto.php">Список автомобилей</a>
-                            <a class="nav-link" href="owner.php">Список владельцев</a>
-                            <a class="nav-link" href="journal.php">Журнал </a>
-                            <a class="nav-link" href="team.php">Наша команда</a>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </nav>-->
     </header>
 
     <div class="container_reg">
-        <h2>Регистрация</h2><br>
-        <form action="php/sign_up.php" method="post">
+        <form class="register-form" action="../php/sign_up.php" method="post">
+            <h2>Регистрация</h2><br>
             <input type="email" class="form-control" name="email" id="email" placeholder="Введите email"><br>
             <input type="text" class="form-control" name="login" id="login" placeholder="Введите логин"><br>
             <input type="text" class="form-control" name="name" id="name" placeholder="Введите имя"><br>
             <input type="password" class="form-control" name="pass" id="pass" placeholder="Введите пароль"><br>
-            <button class="btn btn-success" type="submit">Зарегистрироваться</button>
+            <input type="password" class="form-control" name="pass2" id="pass2" placeholder="Подтвердите пароль"><br>
+            <button class="btn-reg" type="submit">Зарегистрироваться</button>
+            <?php
+                if ($_SESSION['message'])
+                {
+                    echo '<p class="msg-err">' .$_SESSION['message'].'</p>';
+                }
+                    unset($_SESSION['message']);
+                ?>
         </form>
     </div>
 

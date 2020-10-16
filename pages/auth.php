@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,20 +34,15 @@
             <?php
                 if (!empty($_COOKIE['user'])) :
               ?>
-                <a class="nav-link" href="auto.php">Список автомобилей</a>
-                <a class="nav-link" href="owner.php">Список владельцев</a>
-                <a class="nav-link" href="journal.php">Журнал </a>
-                <a class="nav-link" href="team.php">Наша команда</a>
+                <a class="nav-link" href="/pages/auto.php">Список автомобилей</a>
+                <a class="nav-link" href="/pages/owner.php">Список владельцев</a>
+                <a class="nav-link" href="/pages/journal.php">Журнал </a>
+                <a class="nav-link" href="/pages/team.php">Наша команда</a>
                 <?php
                 endif;
                 ?>
             </nav>
             <ul class="nav justify-content-end">
-            <li class="nav-item">
-            <?php if (!empty($_COOKIE['user'])) : ?>
-                <a class="nav-link" href="auth.php">Вход</a>
-            <?php endif;?> 
-                </li>
                 <li class="nav-item">
                 <button type="button" class="btn btn-light" onclick="window.location.href ='registration.php'"> Регистрация</button>
                 </li>
@@ -52,36 +50,21 @@
     </div>
   </nav>
 </div>
-        <!--<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000000;">
-            <div class="container">
-                <div class="cap">
-                    <a class="navbar-brand" href="/index.php">
-                        <img src="img/Logo.jpg" width="30" height="30" class="d-inline-block align-top" alt=""
-                            loading="lazy">
-                        AutoBox</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <nav class="navbar-nav">
-                            <a class="nav-link" href="auto.php">Список автомобилей</a>
-                            <a class="nav-link" href="owner.php">Список владельцев</a>
-                            <a class="nav-link" href="journal.php">Журнал </a>
-                            <a class="nav-link" href="team.php">Наша команда</a>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </nav>-->
     </header>
 
     <div class="container_reg">
-        <h2>Авторизация</h2><br>
-        <form action="/php/sign_in.php" method="post">
+        <form  class="auth-form" action="../php/sign_in.php" method="post">
+            <h2>Авторизация</h2><br>
             <input type="text" class="form-control" name="login" id="login" placeholder="Введите логин"><br>
             <input type="password" class="form-control" name="pass" id="pass" placeholder="Введите пароль"><br>
-            <button class="btn btn-success" type="submit">Войти</button>
+            <button class="btn-auth" type="submit">Войти</button>
+            <?php
+                if ($_SESSION['message'])
+                {
+                    echo '<p class="msg-err">' .$_SESSION['message']. '</p>';
+                }
+                    unset($_SESSION['message']);
+                ?>
         </form>
     </div>
 

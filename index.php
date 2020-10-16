@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,7 +53,7 @@
                 <button type="button" class="btn btn-light" onclick="window.location.href ='/pages/registration.php'">Регистрация</button>
                 </li>
                 <?php else : ?>
-                <li class="nav-item" ><h6>Привет,<br><?= $_COOKIE['user'] ?></h6></li>
+                <li class="nav-item" ><h6 class="hello-title">Привет, <?= $_SESSION['user']['login'] ?></h6></li>
                 <li class="nav-item"><a class="nav-link" href="/pages/lk.php" >Личный кабинет</a><li>
                 <li class="nav-item">
                 <button type="button" class="btn btn-light" onclick="window.location.href ='/php/exit.php'">Выход</button>

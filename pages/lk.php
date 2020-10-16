@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,65 +31,33 @@
             <img src="../img/Logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
             AutoBox</a>
             <nav class="nav">
-            <?php
-                if (!empty($_COOKIE['user'])) :
-              ?>
                 <a class="nav-link" href="/pages/auto.php">Список автомобилей</a>
                 <a class="nav-link" href="/pages/owner.php">Список владельцев</a>
                 <a class="nav-link" href="/pages/journal.php">Журнал </a>
                 <a class="nav-link" href="/pages/team.php">Наша команда</a>
-                <?php
-                endif;
-                ?>
             </nav>
             <ul class="nav justify-content-end">
-            <?php
-                if (empty($_COOKIE['user'])) :
-              ?>
-            <li class="nav-item">
-                <a class="nav-link" href="/pages/auth.php">Вход</a>
-                </li>
-                <li class="nav-item">
-                <button type="button" class="btn btn-light" onclick="window.location.href ='/pages/registration.php'">Регистрация</button>
-                </li>
-                <?php else : ?>
-                <li class="nav-item" ><h6>Привет,<br><?= $_COOKIE['user'] ?></h6></li>
+            <li class="nav-item" ><h6 class="hello-title">Привет, <?= $_SESSION['user']['login'] ?></h6></li>
                 <li class="nav-item">
                 <button type="button" class="btn btn-light" onclick="window.location.href ='/php/exit.php'">Выход</button>
                 </li>
-                <?php endif; ?>
             </ul>
     </div>
   </nav>
 </div>
   </header>
-  <div class="container-lk"> 
-  <?php
-$mysql = new mysqli('localhost','root','root','autobox');
-$name = $_COOKIE['user'];
-$result= $mysql->query("SELECT `email`, `login` FROM `users` WHERE `name` = '$name'");
-$arr=$result->fetch_assoc();
-$email=$arr['email'];
-$login = $arr['login'];
 
-?> 
-<table class="table">
-  <thead>
-    <tr>
-      <th><h3>Личный кабинет</h3></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><h6>Имя:</h6><?= $_COOKIE['user'] ?></td>
-    <tr>
-      <td><h6>Логин:</h6><?=$login?></td>
-    </tr>
-    <tr>
-      <td><h6>Email:</h6><?=$email?></td>
-    </tr>
-  </tbody>
-</table>
+  <div class="container-lk"> 
+  <div class="card" style="width: 600px;">
+  <div class="card-header">
+  <h2 class="lk-title">Профиль</h2>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><h5 class="lk-title">Имя: <?=$_SESSION['user']['name']?> </h5></li>
+    <li class="list-group-item"><h5 class="lk-title">Логин: <?=$_SESSION['user']['login']?></h5></li>
+    <li class="list-group-item"><h5 class="lk-title">Email: <?=$_SESSION['user']['email']?></h5></li>
+  </ul>
+</div>
   </div>
 
 

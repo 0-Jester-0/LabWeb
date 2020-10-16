@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost:3306
--- Время создания: Окт 15 2020 г., 19:06
+-- Время создания: Окт 16 2020 г., 19:48
 -- Версия сервера: 5.7.24
 -- Версия PHP: 7.4.1
 
@@ -41,11 +41,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `login`, `name`) VALUES
-(1, 'fdshjsd@gfgd.ru', 'e8a8d9c7fb323aafcbcac1759714810b', 'granch123', 'george'),
-(2, 'fsdafadfas@muil.tu', 'e8a8d9c7fb323aafcbcac1759714810b', 'hard123', 'Harry'),
-(4, 'fadsfafasdf@sdf.rt', 'dce3e3f5f59fb5a190b1eff16555349a', 'asdf', 'fsd'),
-(5, 'fsadf@fsgfd.gfdg', 'dce3e3f5f59fb5a190b1eff16555349a', 'as', '1fds'),
-(6, 'sdfsd123@gf.cds', '3de799dec719f57ed1f15cdd10742563', 'Rony231', 'Rony');
+(12, 'rom.mart1202@gmail.com', '844f7e892e1b40e904be20ff596fe2ce', 'hardman', 'Роман Сергеевич Мартышкин'),
+(13, 'martyshkin18@mail.ru', 'f3070c95b934e75b4cc856346a5b76c8', 'Martik', 'Роман Сергеевич Мартышкин');
 
 --
 -- Индексы сохранённых таблиц
@@ -65,7 +62,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

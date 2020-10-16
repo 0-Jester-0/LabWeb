@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,7 +45,7 @@
                 <button type="button" class="btn btn-light" onclick="window.location.href ='/pages/registration.php'">Регистрация</button>
                 </li>
                 <?php else : ?>
-                <li class="nav-item" ><h6>Привет,<br><?= $_COOKIE['user'] ?></h6></li>
+                <li class="nav-item" ><h6 class="hello-title">Привет, <?= $_SESSION['user']['login'] ?></h6></li>
                 <li class="nav-item"><a class="nav-link" href="/pages/lk.php" >Личный кабинет</a><li>
                 <li class="nav-item">
                 <button type="button" class="btn btn-light" onclick="window.location.href ='/php/exit.php'">Выход</button>
@@ -52,28 +55,6 @@
     </div>
   </nav>
 </div>
-  <!--<header>
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000000;">
-      <div class="container">
-        <div class="cap">
-          <a class="navbar-brand" href="/index.php">
-            <img src="img/Logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
-            AutoBox</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <nav class="navbar-nav">
-              <a class="nav-link" href="autophpl">Список автомобилей</a>
-              <a class="nav-link" href="owner.php">Список владельцев</a>
-              <a class="nav-link" href="journal.php">Журнал </a>
-              <a class="nav-link" href="team.php">Наша команда </a>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </nav>-->
   </header>
 <div class="section">
     <div class="container_section">
