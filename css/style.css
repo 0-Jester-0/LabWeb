@@ -1,0 +1,213 @@
+body {
+    font-family: 'Quantico', sans-serif;
+    background-image: url("https://aishaspb.ru/uploads/s/c/a/q/caqumwemrsxf/img/full_wukuMGYo.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    /*box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);*/
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0px;
+    text-align: center;
+    color: #ffffff;
+}
+
+/*======Container======*/
+.container {
+    width: 100%;
+    min-width: 1170px;
+    margin: 0 auto;
+}
+
+
+/*======Nav======*/
+/*.cap {
+    display: flex;
+    align-items: center;
+}
+*/
+.nav {
+    font-size: 16px;
+    justify-content: space-between;
+}
+
+.navbar-nav {
+    display: flexbox;
+    justify-content: end;
+}
+
+
+
+/*======Inrto======*/
+.intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: 180px;
+    padding-top: 90px;
+    text-shadow: 1px 1px 2px black;
+
+}
+
+.intro_inner {
+    width: 100%;
+    max-width: 970px;
+    margin: 0 auto;
+}
+
+.intro-title {
+    margin: 0 0 30px;
+
+    font-family: 'Play', sans-serif;
+    font-size: 65px;
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+.intro-subtitle {
+    font-size: 22px;
+    line-height: 1;
+    font-weight: 700;
+}
+
+/*=================Список авто===================*/
+
+.container_section {
+    text-align: center;
+    margin-right: 0;
+}
+
+.title_page_2 {
+    margin-bottom: 20px;
+}
+
+
+.card {
+    background-color: lightgrey;
+}
+
+.row {
+    padding-bottom: 30px;
+    padding-left: 30px;
+    align-items: center;
+    width: 1360px;
+}
+
+/*=================Список владельцев===================*/
+
+.title-page_3 {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.container-table {
+    padding-left: 15px;
+    padding-right: 15px;
+
+}
+
+.table {
+    /*border: 1px solid white;*/
+    color: white;
+    text-align: center;
+    /*text-shadow: 2px 2px 1px black;*/
+    font-size: 17px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.th {
+    border: 1px solid grey;
+}
+
+.td {
+    border: 1px solid grey;
+}
+
+/*=================Журнал потока===================*/
+
+.table-out {
+    background-color: rgba(255, 0, 0, 0.2);
+}
+
+.table-in {
+    background-color: rgba(0, 255, 0, 0.2);
+}
+
+.table-static {
+    background-color: rgba(0, 0, 255, 0.2);
+}
+
+
+/*=================Наша команда===================*/
+
+
+.container-team {
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    margin: 0 0;
+    text-align: center;
+}
+
+.team {
+    text-align: center;
+}
+
+.col {
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.carousel-control-prev {
+    width: 20px;
+}
+
+
+.carousel-control-next {
+    width: 20px;
+}
+
+.title-team {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.card-text {
+    text-align: center;
+}
+
+.title-team-1 {
+    text-align: center;
+}
+
+/*=================Регистрация===================*/
+
+.container_reg {
+    text-align: center;
+    margin-left: 430px;
+    margin-top: 80px;
+    width: 500px;
+}
+
+.form-control {
+    align-items: center;
+}
+
+/*=================Личный кабинет===================*/
