@@ -37,10 +37,8 @@ session_start();
                 <a class="nav-link" href="/pages/auto.php">Список автомобилей</a>
                 <a class="nav-link" href="/pages/owner.php">Список владельцев</a>
                 <a class="nav-link" href="/pages/journal.php">Журнал </a>
+            <?php endif; ?>
                 <a class="nav-link" href="/pages/team.php">Наша команда</a>
-                <?php
-                endif;
-                ?>
             </nav>
             <ul class="nav justify-content-end">
             <?php

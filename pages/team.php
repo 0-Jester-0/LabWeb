@@ -32,10 +32,14 @@ session_start();
             <img src="../img/Logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
             AutoBox</a>
             <nav class="nav">
+            <?php
+                if (isset($_SESSION['user'])) :
+              ?>
                 <a class="nav-link" href="/pages/auto.php">Список автомобилей</a>
                 <a class="nav-link" href="/pages/owner.php">Список владельцев</a>
                 <a class="nav-link" href="/pages/journal.php">Журнал </a>
                 <a class="nav-link" href="/pages/team.php">Наша команда</a>
+                <?php endif; ?>
             </nav>
             <ul class="nav justify-content-end">
             <?php
