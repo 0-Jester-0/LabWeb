@@ -1,11 +1,6 @@
 <?php
 session_start();
-if(!$_SESSION['user']){
-  header('Location: ../pages/auth.php');
-}
 ?>
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 

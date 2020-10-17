@@ -1,10 +1,10 @@
 <?php
 session_start();
 if(!$_SESSION['user']){
-  header('Location: ../pages/auth.php');
+  header('Location: /auth.php');
 }
 ?>
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
