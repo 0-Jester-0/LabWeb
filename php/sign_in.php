@@ -2,25 +2,24 @@
 
 session_start();
 
-$login = filter_var(trim($_POST['login']),FILTER_SANITIZE_STRING);
-$pass = filter_var(trim($_POST['pass']),FILTER_SANITIZE_STRING);
+require_once 'connect.php';
 
-$pass = md5($pass."fghkiju7y6");
+$login = filter_var(trim($_POST['login']), FILTER_SANITIZE_STRING);
+$pass = filter_var(trim($_POST['pass']), FILTER_SANITIZE_STRING);
 
-$mysql = new mysqli('localhost', 'root', 'root', 'autobox');
+$pass = md5($pass . "fghkiju7y6");
 
 $result = $mysql->query("SELECT * FROM `users` WHERE `login`= '$login' AND `password`='$pass'");
 $user = $result->fetch_assoc();
-if(mysqli_num_rows($result) < 1)
-{
+if (mysqli_num_rows($result) < 1) {
   $_SESSION['message'] = 'Неверный логин или пароль!';
   header('Location: ../pages/auth.php');
   exit();
 }
 
-$_SESSION['user'] = $login;
+$_SESSION['user'] = $user['id'];
 
-$_SESSION ['user'] = [
+$_SESSION['user'] = [
   "name" => $user['name'],
   "login" => $user['login'],
   "email" => $user['email']
@@ -29,5 +28,3 @@ $_SESSION ['user'] = [
 $mysql->close();
 
 header('Location: /index.php');
-
-?>
