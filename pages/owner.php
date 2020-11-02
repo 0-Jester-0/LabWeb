@@ -51,7 +51,7 @@ if (!$_SESSION['user']) {
               </li>
             <?php else : ?>
               <li class="nav-item">
-                <h6 class="hello-title">Привет, <?= $_SESSION['user']['login'] ?></h6>
+                <h6 class="hello-title">Привет, <?= $_SESSION['array']['login'] ?></h6>
               </li>
               <li class="nav-item"><a class="nav-link" href="/pages/lk.php">Личный кабинет</a>
               <li>

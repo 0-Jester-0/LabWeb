@@ -19,11 +19,13 @@ if (mysqli_num_rows($result) < 1) {
 
 $_SESSION['user'] = $user['id'];
 
-$_SESSION['user'] = [
-  "name" => $user['name'],
-  "login" => $user['login'],
-  "email" => $user['email']
-];
+if (isset($_SESSION['user'])) {
+  $_SESSION['array']  = [
+    "name" => $user['name'],
+    "login" => $user['login'],
+    "email" => $user['email']
+  ];
+}
 
 $mysql->close();
 

@@ -50,7 +50,7 @@ if (!$_SESSION['user']) {
               </li>
             <?php else : ?>
               <li class="nav-item">
-                <h6 class="hello-title">Привет, <?= $_SESSION['user']['login'] ?></h6>
+                <h6 class="hello-title">Привет, <?= $_SESSION['array']['login'] ?></h6>
               </li>
               <li class="nav-item">
                 <button type="button" class="btn btn-light" onclick="window.location.href ='/php/logout.php'">Выход</button>
@@ -61,7 +61,6 @@ if (!$_SESSION['user']) {
       </nav>
     </div>
   </header>
-
   <div class="container-lk">
     <div class="card" style="width: 600px;">
       <div class="card-header">
@@ -69,13 +68,13 @@ if (!$_SESSION['user']) {
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
-          <h5 class="lk-title">Имя: <?= $_SESSION['user']['name'] ?> </h5>
+          <h5 class="lk-title">Имя: <?= $_SESSION['array']['name'] ?> </h5>
         </li>
         <li class="list-group-item">
-          <h5 class="lk-title">Логин: <?= $_SESSION['user']['login'] ?></h5>
+          <h5 class="lk-title">Логин: <?= $_SESSION['array']['login'] ?></h5>
         </li>
         <li class="list-group-item">
-          <h5 class="lk-title">Email: <?= $_SESSION['user']['email'] ?></h5>
+          <h5 class="lk-title">Email: <?= $_SESSION['array']['email'] ?></h5>
         </li>
       </ul>
     </div>
