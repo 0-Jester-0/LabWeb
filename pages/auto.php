@@ -67,7 +67,7 @@ if (!$_SESSION['user']) {
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
         <div class="col">
           <div class="card" style="width: 18rem;">
-            <img src="https://s.auto.drom.ru/i24220/s/photos/29415/29414773/gen440wb_280147732.jpg" class="card-img-top" alt="...">
+            <img src="../img/16075338901.jpg" class="card-img-top" alt="...">
             <div class="card-body">
               <p class="card-text">Марка автомобиля: Nissan<br> Модель: Teana<br> Цвет: Черный </p>
             </div>
@@ -75,7 +75,7 @@ if (!$_SESSION['user']) {
         </div>
         <div class="col">
           <div class="card" style="width: 18rem;">
-            <img src="https://avatars.mds.yandex.net/get-autoru-vos/2160363/3de3420fa36ca64e9ee69ae0efe13fba/1200x900" class="card-img-top" alt="...">
+            <img src="../img/16075353382.webp" class="card-img-top" alt="...">
             <div class="card-body">
               <p class="card-text">Марка автомобиля:Chevrolet<br> Модель: Aveo<br> Цвет: Черный </p>
             </div>
@@ -83,7 +83,7 @@ if (!$_SESSION['user']) {
         </div>
         <div class="col">
           <div class="card" style="width: 18rem;">
-            <img src="https://a.d-cd.net/6ba3305s-1920.jpg" class="card-img-top" alt="...">
+            <img src="../img/16075366433.jpg" class="card-img-top" alt="...">
             <div class="card-body">
               <p class="card-text">Марка автомобиля:Mercedes<br> Модель: GLK<br> Цвет: Красный </p>
             </div>
@@ -91,18 +91,17 @@ if (!$_SESSION['user']) {
         </div>
         <div class="col">
           <div class="card" style="width: 18rem;">
-            <img src="https://avatars.mds.yandex.net/get-autoru-vos/2175909/4a77a67529acf8c7f4d097c19f955ac9/1200x900" class="card-img-top" alt="...">
+            <img src="../img/16075366774" class="card-img-top" alt="...">
             <div class="card-body">
               <p class="card-text">Марка автомобиля:Nissan<br> Модель: GTR<br> Цвет: Серый </p>
             </div>
           </div>
         </div>
       </div>
-
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
         <div class="col">
           <div class="card" style="width: 18rem;">
-            <img src="https://a.d-cd.net/7414f2ds-1920.jpg" class="card-img-top" alt="...">
+            <img src="../img/16075367145.jpg" class="card-img-top" alt="...">
             <div class="card-body">
               <p class="card-text">Марка автомобиля: Toyota<br> Модель: Mark<br> Цвет: Белый </p>
             </div>
@@ -110,7 +109,7 @@ if (!$_SESSION['user']) {
         </div>
         <div class="col">
           <div class="card" style="width: 18rem;">
-            <img src="https://avatars.mds.yandex.net/get-pdb/2362063/e02f5aa7-4222-42e2-b05f-18c9aa32a3a2/s1200?webp=false" class="card-img-top" alt="...">
+            <img src="../img/16075371266.jpg" class="card-img-top" alt="...">
             <div class="card-body">
               <p class="card-text">Марка автомобиля:ВАЗ<br> Модель: 2107<br> Цвет: Синий </p>
             </div>
@@ -118,7 +117,7 @@ if (!$_SESSION['user']) {
         </div>
         <div class="col">
           <div class="card" style="width: 18rem;">
-            <img src="https://ag-spots-2018.o.auroraobjects.eu/2018/06/11/porsche-971-panamera-turbo-s-e-hybrid-sport-turismo-c726011062018185631_2.jpg" class="card-img-top" alt="...">
+            <img src="../img/16075371517" class="card-img-top" alt="...">
             <div class="card-body">
               <p class="card-text">Марка автомобиля:Porche<br> Модель: Panamera<br> Цвет: Белый </p>
             </div>
@@ -126,7 +125,7 @@ if (!$_SESSION['user']) {
         </div>
         <div class="col">
           <div class="card" style="width: 18rem;">
-            <img src="https://a.d-cd.net/36ececu-960.jpg" class="card-img-top" alt="...">
+            <img src="../img/16075371838.jpg" class="card-img-top" alt="...">
             <div class="card-body">
               <p class="card-text">Марка автомобиля:ВАЗ<br> Модель: Patriot<br> Цвет: Серый </p>
             </div>
@@ -137,7 +136,7 @@ if (!$_SESSION['user']) {
   </div>
 
 
-  </div>
+  <!--</div>-->
   <!-- Optional JavaScript -->
   <!-- Popper.js first, then Bootstrap JS -->
   <script src=" https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">

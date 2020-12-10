@@ -61,7 +61,7 @@ if (!$_SESSION['user']) {
       </nav>
     </div>
   </header>
-  <div class="container-lk">
+   <div class="container-lk">
     <div class="card" style="width: 600px;">
       <div class="card-header">
         <h2 class="lk-title">Профиль</h2>
@@ -80,8 +80,11 @@ if (!$_SESSION['user']) {
     </div>
   </div>
   <button type="button" class="btn-auto" onclick="window.location.href ='calculator.php'">Калькулятор</button>
-
-
+  <?php
+  if ($_SESSION['user'] == 2) {
+  ?>
+  <button type="button" class="btn-auto" onclick="window.location.href ='adminpanel.php'">Админпанель</button>
+  <?php } ?>
   <!-- Optional JavaScript -->
   <!-- Popper.js first, then Bootstrap JS -->
   <script src=" https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">

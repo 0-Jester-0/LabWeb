@@ -24,44 +24,50 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `users`
+-- Структура таблицы `cars`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE `cars` (
   `id` int(11) UNSIGNED NOT NULL,
-  `email` varchar(70) NOT NULL,
-  `login` varchar(70) NOT NULL,
-  `password` varchar(35) NOT NULL,
-  `name` varchar(150) NOT NULL
+  `image` varchar(100) NOT NULL,
+  `brand` varchar(70) NOT NULL,
+  `model` varchar(35) NOT NULL,
+  `color` varchar(70) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `users`
+-- Дамп данных таблицы `cars`
 --
 
-INSERT INTO `users` (`id`, `email`, `login`, `password`, `name`) VALUES
-(1, 'rom.mart1202@gmail.com', 'hardman', '02972e23134ad587b452b8d687164d43', 'Роман Мартышкин'),
-(2, 'admin@mail.ru', 'admin', '1453d8c44a3b777059d0265b34f8973c', 'Administrator');
+INSERT INTO `cars` (`id`, `image`, `brand`, `model`, `color`) VALUES
+(1, 'img/16075338901.jpg', 'Nissan', 'Teana', 'Черный'),
+(8, 'img/16075353382.webp', 'Chevrolet', 'Aveo', 'Черный'),
+(9, 'img/16075366433.jpg', 'Mercedes', 'GLK', 'Красный'),
+(10, 'img/16075366774', 'Nissan', 'GTR', 'Серый'),
+(11, 'img/16075367145.jpg', 'Toyota', 'Mark', 'Белый'),
+(12, 'img/16075371266.jpg', 'ВАЗ', '2107', 'Синий'),
+(13, 'img/16075371517', 'Porche', 'Porche', 'Белый'),
+(14, 'img/16075371838.jpg', 'ВАЗ', 'Patriot', 'Серый');
 
 --
 -- Индексы сохранённых таблиц
 --
 
 --
--- Индексы таблицы `users`
+-- Индексы таблицы `cars`
 --
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `cars`
+  ADD UNIQUE KEY `id-auto` (`id`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
 --
 
 --
--- AUTO_INCREMENT для таблицы `users`
+-- AUTO_INCREMENT для таблицы `cars`
 --
-ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `cars`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
