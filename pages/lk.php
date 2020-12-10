@@ -83,7 +83,7 @@ if (!$_SESSION['user']) {
   <?php
   if ($_SESSION['user'] == 2) {
   ?>
-  <button type="button" class="btn-auto" onclick="window.location.href ='adminpanel.php'">Админпанель</button>
+  <button type="button" class="btn-auto" onclick="window.location.href ='adminpanel.php'">Управление данными</button>
   <?php } ?>
   <!-- Optional JavaScript -->
   <!-- Popper.js first, then Bootstrap JS -->

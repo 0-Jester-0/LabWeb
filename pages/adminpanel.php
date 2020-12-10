@@ -15,7 +15,7 @@ if ($_SESSION['user'] != 2) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Админпанель</title>
+    <title>Управление данными</title>
 
     <link rel="icon" href="../img/Logo.jpg" type="image/x-icon">
 
