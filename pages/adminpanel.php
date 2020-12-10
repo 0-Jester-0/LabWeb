@@ -147,7 +147,7 @@ if ($_SESSION['user'] != 2) {
          }
      }
      function checkall(){
-         if(validationBrand() || validationModel() || validationColor() ) return true;
+         if(validationBrand() && validationModel() && validationColor() ) return true;
          else return false;
      }
 </script>
