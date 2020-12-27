@@ -75,9 +75,10 @@ if ($_SESSION['user'] != 2) {
             <th>BRAND</th>
             <th>MODEL</th>
             <th>COLOR</th>
+            <th>Update</th>
         </tr>
        <?php
-        $cars = mysqli_query($mysql, "SELECT * FROM `cars`");
+        $cars = $db -> query( "SELECT * FROM `cars`");
         $cars= mysqli_fetch_all($cars);
         foreach ($cars as $car) {
         ?>
@@ -87,6 +88,7 @@ if ($_SESSION['user'] != 2) {
             <td><?= $car[2] ?></td>
             <td><?= $car[3] ?></td>
             <td><?= $car[4] ?></td>
+            <td><a href="update.php?id=<?= $car[0] ?>">Обновить</a></td>
         </tr>
         <?php
                 }

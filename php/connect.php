@@ -1,10 +1,19 @@
 <?php
+function connect(){
+    $host = 'localhost';
+    $dbname = 'autobox';
+    $user = 'root';
+    $pass = 'root';
+    $charset = 'utf8';
 
-global $mysql;
+    $dsn = "mysql:host=$host;dbname=$dbname;charset=$charset";
+    $option = [
+        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES   => false,
+    ];
 
-$mysql = new mysqli('localhost', 'root', 'root', 'autobox');
-
-if (!$mysql) {
-    die('Error connect to database!');
+    $db=new PDO($dsn,$user,$pass,$option);
+    return $db;
 }
 ?>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once 'connect.php';
+require_once ("connect.php");
 
 $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
 $login = filter_var(trim($_POST['login']), FILTER_SANITIZE_STRING);
@@ -17,18 +17,27 @@ if ($pass != $pass2) {
 
 $pass = md5($pass . "fghkiju7y6");
 
-$result = $mysql->query("SELECT * FROM `users` WHERE `login`= '$login' AND `email`='$email'");
-$user = $result->fetch_assoc();
-if (mysqli_num_rows($result) > 0) {
-  $_SESSION['message'] = 'Пользователь с таким логином или email уже существует!';
-  header('Location: ../pages/registration.php');
-  exit();
+$db = connect();
+$sth = $db->prepare("SELECT * FROM users WHERE login = :login AND email = :email");
+$sth -> bindParam(':login',$login);
+$sth -> bindParam(':email',$email);
+$sth -> execute();
+foreach ($sth as $result){
+    if($result != NULL){
+        $_SESSION['message'] = 'Пользователь с таким логином или email уже существует!';
+        header('Location: ../pages/registration.php');
+        exit();
+    }
 }
 
-$mysql->query("INSERT INTO `users` (`email`, `login`, `password`, `name`) VALUES('$email', '$login', '$pass', '$name')");
+$sth1 = $db->prepare("INSERT INTO users (email, login, password, name) VALUES(:email, :login, :password, :name)");
+$sth1->bindParam(':email', $email);
+$sth1->bindParam(':login', $login);
+$sth1->bindParam(':password', $pass);
+$sth1->bindParam(':name', $name);
+$sth1->execute();
 $_SESSION['message'] = 'Регистрация прошла успешно!';
 header('Location: ../pages/auth.php');
 
-$mysql->close();
-
-header('Location: ../pages/auth.php');
+$db = null;
+?>
