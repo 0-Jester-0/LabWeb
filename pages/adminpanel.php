@@ -79,7 +79,7 @@ if ($_SESSION['user'] != 2) {
         </tr>
        <?php
         $db = connect();
-        $cars = $db -> query( "SELECT * FROM cars");
+        $cars = $db -> prepare( "SELECT * FROM cars");
         $cars->execute();
         while($auto = $cars->fetch(PDO::FETCH_ASSOC)){
         ?>
