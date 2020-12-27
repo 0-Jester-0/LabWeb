@@ -1,12 +1,20 @@
 <?php
 session_start();
 
-require_once 'connect.php';
+require_once ("connect.php");
 
 $brand = $_POST['brand'];
 $model = $_POST['model'];
 $color = $_POST['color'];
 $image = $_POST['image'];
+if(mb_strlen($brand) < 3){
+    $_SESSION['message'] = 'Название марки автомобиля должно содержать минимум 3 символа!';
+    header('Location: ../pages/adminpanel.php');
+}
+elseif(mb_strlen($model) < 2 || mb_strlen($color) < 2){
+    $_SESSION['message'] = 'Название модели/цвета автомобиля должно содержать минимум 2 символа!';
+    header('Location: ../pages/adminpanel.php');
+}
 if (!empty($_FILES['image']['name'])){
     $upload_dir = "../img/";
     $my_file = $_FILES['image'];
@@ -43,25 +51,24 @@ if (!empty($_FILES['image']['name'])){
             echo "<p>Не удалось сохранить изображение!</p>";
             exit;
         }
+        chmod($upload_dir . $file_name, 0644);
+
+        $db = connect();
+        $sth = $db->prepare("INSERT INTO cars (image, brand, model, color) VALUES(:image, :brand, :model, :color)");
+        $sth->bindParam(':image', $file_name);
+        $sth->bindParam(':brand', $brand);
+        $sth->bindParam(':model', $model);
+        $sth->bindParam(':color', $color);
+        $sth->execute();
+
+        $_SESSION['message'] = 'Автомобиль успешно добавлен!';
+        header('Location: ../pages/adminpanel.php');
     }
     else {
         echo "<p>Недопустимый формат файла!</p>";
     }
-    chmod($upload_dir . $file_name, 0644);
+} else {
+    echo "<p>Файл не выбран</p>";
 }
-if(mb_strlen($brand) < 3){
-    $_SESSION['message'] = 'Название марки автомобиля должно содержать минимум 3 символа!';
-    header('Location: ../pages/adminpanel.php');
-}
-elseif(mb_strlen($model) < 2 || mb_strlen($color) < 2){
-    $_SESSION['message'] = 'Название модели/цвета автомобиля должно содержать минимум 2 символа!';
-    header('Location: ../pages/adminpanel.php');
-}
-else{
-    $mysql->query("INSERT INTO `cars` (`image`, `brand`, `model`, `color`) VALUES('$file_name', '$brand', '$model', '$color')");
-    $_SESSION['message'] = 'Автомобиль успешно добавлен!';
-    header('Location: ../pages/adminpanel.php');
-}
-
-$mysql->close();
+$db = null;
 ?>

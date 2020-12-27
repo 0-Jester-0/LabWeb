@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../php/connect.php';
+require_once ("../php/connect.php");
 if (!$_SESSION['user']) {
     header('Location: ../pages/auth.php');
 }
@@ -78,16 +78,17 @@ if ($_SESSION['user'] != 2) {
             <th>Update</th>
         </tr>
        <?php
-        $cars = $db -> query( "SELECT * FROM `cars`");
-        $cars= mysqli_fetch_all($cars);
-        foreach ($cars as $car) {
+        $db = connect();
+        $cars = $db -> query( "SELECT * FROM cars");
+        $cars->execute();
+        while($auto = $cars->fetch(PDO::FETCH_ASSOC)){
         ?>
         <tr>
-            <td><?= $car[0] ?></td>
-            <td><?= $car[1] ?></td>
-            <td><?= $car[2] ?></td>
-            <td><?= $car[3] ?></td>
-            <td><?= $car[4] ?></td>
+            <td><?= $auto['id'] ?></td>
+            <td><?= $auto['image'] ?></td>
+            <td><?= $auto['brand'] ?></td>
+            <td><?= $auto['model'] ?></td>
+            <td><?= $auto['color'] ?></td>
             <td><a href="update.php?id=<?= $car[0] ?>">Обновить</a></td>
         </tr>
         <?php
