@@ -2,10 +2,16 @@
 session_start();
 require_once ("../php/connect.php");
 
+$brand_name = $_GET['name_brand'];
 $db = connect();
-$cars = $db -> prepare( "SELECT * FROM cars");
+$brands = $db -> prepare( "SELECT * FROM brand WHERE name_brand = :name_brand");
+$brands -> bindParam(':name_brand',$brand_name);
+$brands->execute();
+$brand = $brands->fetch(PDO::FETCH_ASSOC);
+
+$cars = $db -> prepare( "SELECT * FROM cars WHERE name_brand = :name_brand");
+$cars->bindParam(':name_brand', $brand_name);
 $cars->execute();
-$auto = $cars->fetch(PDO::FETCH_ASSOC);
 
 if (!$_SESSION['user']) {
     header('Location: ../pages/auth.php');
@@ -74,41 +80,47 @@ if ($_SESSION['user'] != 2) {
     </div>
 </header>
 <div class="admin">
+    <h2>Название бренда: <?= $brand['name_brand'] ?></h2>
+    <h4>Страна: <?= $brand['country'] ?></h4>
+
+
     <table class="table">
         <tr>
             <th>ID</th>
-            <th>NAME_BRAND</th>
-            <th>COUNTRY</th>
-            <th>VIEW</th>
+            <th>IMAGE</th>
+            <th>BRAND</th>
+            <th>MODEL</th>
+            <th>COLOR</th>
             <th>Update</th>
             <th>Delete</th>
         </tr>
-       <?php
-        $db = connect();
-        $brands = $db -> prepare( "SELECT * FROM brand");
-        $brands->execute();
-        while($brand = $brands->fetch(PDO::FETCH_ASSOC)){
-        ?>
-        <tr>
-            <td><?= $brand['id'] ?></td>
-            <td><?= $brand['name_brand'] ?></td>
-            <td><?= $brand['country'] ?></td>
-            <td><a href="view_brand.php?name_brand=<?= $brand['name_brand']?>">Обзор</a> </td>
-            <td><a href="update_brand.php?id=<?= $brand['id'] ?>">Обновить</a></td>
-            <td><a style="color: #ff0000;" href="../php/delete_brand.php?name_brand=<?= $brand['name_brand'] ?>&image=<?= $auto['image'] ?>">Удалить</a></td>
-        </tr>
         <?php
-                }
+        while($auto = $cars->fetch(PDO::FETCH_ASSOC)){
+            ?>
+            <tr>
+                <td><?= $auto['id'] ?></td>
+                <td><?= $auto['image'] ?></td>
+                <td><?= $auto['name_brand'] ?></td>
+                <td><?= $auto['model'] ?></td>
+                <td><?= $auto['color'] ?></td>
+                <td><a href="update.php?id=<?= $auto['id'] ?>&name_brand=<?= $brand['name_brand'] ?>">Обновить</a></td>
+                <td><a style="color: #ff0000;" href="../php/delete.php?id=<?= $auto['id'] ?>&image=<?= $auto['image'] ?>">Удалить</a></td>
+            </tr>
+            <?php
+        }
         ?>
     </table>
-    <button type="button" class="btn-auto" onclick="window.location.href ='admin2.php'">Автомобили</button>
+    <button type="button" class="btn-auto" onclick="window.location.href ='adminpanel.php'">Марки автомобилей</button>
     <div class="container_reg">
-        <form style="margin-top: 55px; background-color: rgba(0, 0, 0, 0.4); padding: 10px" class="register-form" name="register-form" id="register-form" action="../php/brands.php" method="post" enctype="multipart/form-data">
-            <h2>Добавление марки</h2><br>
-            <label style="color:white; text-align: left;" for="name_brand">Название марки * <span id="br"></span></label>
-            <input type="text" class="form-control" name="name_brand" id="br" onBlur="validationBrand()" placeholder="Введите название марки"><br>
-            <label style="color:white; text-align: left;" for="country">Страна автомобиля * <span id="cn"></span></label>
-            <input type="text" class="form-control" name="country" id="cn" onBlur="validationModel()" placeholder="Введите страну марки"><br>
+        <form style="margin-top: 55px; background-color: rgba(0, 0, 0, 0.4); padding: 10px" class="register-form" name="register-form" id="register-form" action="../php/create.php" method="post" enctype="multipart/form-data">
+            <h2>Добавление автомобиля</h2><br>
+            <input type="hidden" name="name_brand" value="<?= $brand['name_brand'] ?>">
+            <input type="hidden" name="MAX_FILE_SIZE" value="5000000">
+            <input type="file" class="form-control" name="image"><br>
+            <label style="color:white; text-align: left;" for="color">Модель автомобиля * <span id="md"></span></label>
+            <input type="text" class="form-control" name="model" id="md" onBlur="validationModel()" placeholder="Введите модель автомобиля"><br>
+            <label style="color:white; text-align: left;    " for="color">Цвет автомобиля * <span id="cl"></span></label>
+            <input type="text" class="form-control" name="color" id="cl" onBlur="validationColor()" placeholder="Введите цвет автомобиля"><br>
             <button class="btn-reg" onclick="checkall()" type="submit">Добавить</button>
             <?php
             if ($_SESSION['message']) {
@@ -123,30 +135,30 @@ if ($_SESSION['user'] != 2) {
 <!-- Optional JavaScript -->
 <!-- Popper.js first, then Bootstrap JS -->
 <script>
-     function validationBrand() {
-         var x = document.forms["register-form"]["name_brand"].value;
-         if (x.length < 3) {
-             document.getElementById('br').innerHTML = '(мин. 3 символа)';
-             return false;
-         } else {
-             document.getElementById('br').innerHTML = '';
-             return true;
-         }
-     }
-     function validationModel() {
-         var x = document.forms["register-form"]["country"].value;
-         if (x.length < 2) {
-             document.getElementById('cn').innerHTML = '(мин. 2 символа)';
-             return false;
-         } else {
-             document.getElementById('cn').innerHTML = '';
-             return true;
-         }
-     }
-     function checkall(){
-         if(validationBrand() && validationModel() && validationColor() ) return true;
-         else return false;
-     }
+    function validationModel() {
+        var x = document.forms["register-form"]["model"].value;
+        if (x.length < 2) {
+            document.getElementById('md').innerHTML = '(мин. 2 символа)';
+            return false;
+        } else {
+            document.getElementById('md').innerHTML = '';
+            return true;
+        }
+    }
+    function validationColor() {
+        var x=document.forms["register-form"]["color"].value;
+        if (x.length < 2) {
+            document.getElementById('cl').innerHTML = '(мин. 2 символа)';
+            return false;
+        } else {
+            document.getElementById('cl').innerHTML = '';
+            return true;
+        }
+    }
+    function checkall(){
+        if(validationBrand() && validationModel() && validationColor() ) return true;
+        else return false;
+    }
 </script>
 <script src=" https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
 </script>

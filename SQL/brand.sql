@@ -24,34 +24,33 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `cars`
+-- Структура таблицы `brand`
 --
 
-CREATE TABLE `cars` (
+CREATE TABLE `brand` (
   `id` int(11) UNSIGNED NOT NULL,
-  `image` varchar(70) NOT NULL,
   `name_brand` varchar(70) NOT NULL,
-  `model` varchar(35) NOT NULL,
-  `color` varchar(70) NOT NULL
+  `country` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Дамп данных таблицы `cars`
+-- Дамп данных таблицы `brand`
 --
 
-INSERT INTO `cars` (`id`, `image`, `name_brand`, `model`, `color`) VALUES
-(9, '9-2.jpg', 'Сhevrolet', 'Camaro', 'Желтый'),
-(10, '1.jpg', 'Nissan', 'Teana', 'Черный'),
-(11, '3.jpg', 'Mercedes', 'GLK', 'Красный');
+INSERT INTO `brand` (`id`, `name_brand`, `country`) VALUES
+(1, 'BMW', 'Германия'),
+(3, 'Сhevrolet', 'США'),
+(4, 'Nissan', 'Япония'),
+(8, 'Mercedes', 'Германия');
 
 --
 -- Индексы сохранённых таблиц
 --
 
 --
--- Индексы таблицы `cars`
+-- Индексы таблицы `brand`
 --
-ALTER TABLE `cars`
+ALTER TABLE `brand`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -59,10 +58,10 @@ ALTER TABLE `cars`
 --
 
 --
--- AUTO_INCREMENT для таблицы `cars`
+-- AUTO_INCREMENT для таблицы `brand`
 --
-ALTER TABLE `cars`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+ALTER TABLE `brand`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
