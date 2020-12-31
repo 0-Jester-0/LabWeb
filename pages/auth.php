@@ -49,8 +49,8 @@ if ($_SESSION['user']) {
     <div class="container_reg">
         <form class="auth-form" action="../php/sign_in.php" method="post">
             <h2>Авторизация</h2><br>
-            <input type="text" class="form-control" name="login" id="login" placeholder="Введите логин"><br>
-            <input type="password" class="form-control" name="pass" id="pass" placeholder="Введите пароль"><br>
+            <input type="text" class="form-control" name="login" id="login" placeholder="Введите логин" required><br>
+            <input type="password" class="form-control" name="pass" id="pass" placeholder="Введите пароль" required><br>
             <button class="btn-auth" type="submit">Войти</button>
             <?php
             if ($_SESSION['message']) {
